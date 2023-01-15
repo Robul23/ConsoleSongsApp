@@ -7,16 +7,16 @@ public class Song {
 
     //    Variables
 
-    private  String title;
-    private  genre genre;
-    private  String artist;
-    private  String link;
+    private String title;
+    private genre genre;
+    private String artist;
+    private String link;
 
-    private  int duration;
+    private int duration;
 
     // CONSTRUCTOR
 
-    public Song(String title, Classes.genre genre, String artist,String link, int duration) {
+    public Song(String title, Classes.genre genre, String artist, String link, int duration) {
         this.title = title;
         this.genre = genre;
         this.artist = artist;
@@ -76,21 +76,21 @@ public class Song {
     }
 
 
-    public  boolean ValidateTitle() {
+    public boolean ValidateTitle() {
         return this.title.contains(" ");
     }
 
-    public  boolean ValidateArtist() {
+    public boolean ValidateArtist() {
         return this.artist.length() >= 10;
 
     }
 
-    public  boolean ValidateDudartion() {
+    public boolean ValidateDudartion() {
         return this.duration > 0;
 
     }
 
-    public  boolean ValidateGenre() {
+    public boolean ValidateGenre() {
         for (genre gen : Classes.genre.values()) {
             if (gen.name().equals(this.genre.toString())) {
                 return true;
@@ -99,8 +99,8 @@ public class Song {
         return false;
     }
 
-    public  boolean ValidateLink() {
-        Pattern youtubeLink = Pattern.compile("http(?:s?):\\/\\/(?:www\\.)?youtu(?:be\\.com\\/watch\\?v=|\\.be\\/)([\\w\\-\\_]*)(&(amp;)?\u200C\u200B[\\w\\?\u200C\u200B=]*)?");
+    public boolean ValidateLink() {
+        Pattern youtubeLink = Pattern.compile("https?://(?:www\\.)?youtu(?:be\\.com/watch\\?v=|\\.be/)([\\w\\-_]*)(&(amp;)?\u200C\u200B[\\w?\u200C\u200B=]*)?");
         Matcher m = youtubeLink.matcher(this.link);
         return m.matches();
     }

@@ -1,12 +1,13 @@
 package Classes;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class Playlist {
     private String playlistName;
-    private ArrayList<Song> songList;
+    private HashSet<Song> songList;
 
-    public Playlist(String playlistName, ArrayList<Song> songList) {
+    public Playlist(String playlistName, HashSet<Song> songList) {
         this.playlistName = playlistName;
         this.songList = songList;
     }
@@ -27,11 +28,11 @@ public class Playlist {
         this.playlistName = playlistName;
     }
 
-    public ArrayList<Song> getSongList() {
+    public HashSet<Song> getSongList() {
         return songList;
     }
 
-    public void setSongList(ArrayList<Song> songList) {
+    public void setSongList(HashSet<Song> songList) {
         this.songList = songList;
     }
 }
