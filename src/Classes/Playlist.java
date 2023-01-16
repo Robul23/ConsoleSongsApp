@@ -1,6 +1,5 @@
 package Classes;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Playlist {
@@ -14,9 +13,9 @@ public class Playlist {
 
     @Override
     public String toString() {
-        return "Playlist{" +
-                "playlistName='" + playlistName + '\'' +
-                ", songList=" + songList +
+        return "\n Playlist{" +
+                "Playlist name = '" + playlistName + '\'' +
+                ",\n songList = " + songList +
                 '}';
     }
 
@@ -24,17 +23,11 @@ public class Playlist {
         return playlistName;
     }
 
-    public void setPlaylistName(String playlistName) {
-        this.playlistName = playlistName;
-    }
-
     public HashSet<Song> getSongList() {
         return songList;
     }
 
-    public void setSongList(HashSet<Song> songList) {
-        this.songList = songList;
-    }
+
 }
 
 

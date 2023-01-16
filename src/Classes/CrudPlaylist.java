@@ -1,7 +1,4 @@
 package Classes;
-
-import com.mysql.cj.protocol.Resultset;
-
 import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
@@ -12,10 +9,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 
+
 public class CrudPlaylist implements ICrudPlaylist {
 
     Database database;
-
     {
         try {
             database = new Database();
@@ -24,13 +21,12 @@ public class CrudPlaylist implements ICrudPlaylist {
         }
     }
 
-
     @Override
     public void createPlaylistRandomSongs(ArrayList<Song> list, ArrayList<Playlist> allPlaylists) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Numarul de melodii din playlist");
+        System.out.println("Number of songs: ");
         int numberOfSongs = sc.nextInt();
-        System.out.println("Nume playlist:");
+        System.out.println("Playlist name:");
         String playlistName = sc.next();
         sc.nextLine();
         HashSet<Song> hashSet = new HashSet<>();
@@ -43,6 +39,8 @@ public class CrudPlaylist implements ICrudPlaylist {
 
         Playlist playlist = new Playlist(playlistName, hashSet);
         allPlaylists.add(playlist);
+        System.out.println("Playlist created successfully!");
+        System.out.println(playlist);
 
     }
 
@@ -50,12 +48,12 @@ public class CrudPlaylist implements ICrudPlaylist {
     public void addSongsToPlaylistByArtistAndTitle(ArrayList<Playlist> allPlaylists) {
         HashSet<Song> hashSet = new HashSet<>();
         Scanner sc = new Scanner(System.in);
-        System.out.println("Nume playlist: ");
+        System.out.println("Playlist name: ");
         String playlistName = sc.next();
-        System.out.println("Nume artist: ");
+        System.out.println("Artist name: ");
         String artistName = sc.next();
         sc.nextLine();
-        System.out.println("Nume melodie: ");
+        System.out.println("Song name: ");
         String songTitle = sc.next();
 
         Connection connection = database.connection;
@@ -71,7 +69,7 @@ public class CrudPlaylist implements ICrudPlaylist {
                 String artist = resultSet.getString("artist");
                 String link = resultSet.getString("link");
                 int duration = resultSet.getInt("duration");
-                Song song = new Song(title, Classes.genre.valueOf(genre), artist, link, duration);
+                Song song = new Song(title, genre, artist, link, duration);
                 hashSet.add(song);
             }
 
@@ -80,6 +78,8 @@ public class CrudPlaylist implements ICrudPlaylist {
         }
         Playlist playlist = new Playlist(playlistName, hashSet);
         allPlaylists.add(playlist);
+        System.out.println("Playlist created successfully!");
+        System.out.println(playlist);
 
     }
 
@@ -87,9 +87,9 @@ public class CrudPlaylist implements ICrudPlaylist {
     public void addAllTheSongFromAnArtist(ArrayList<Playlist> allPlaylists) {
         HashSet<Song> hashSet = new HashSet<>();
         Scanner sc = new Scanner(System.in);
-        System.out.println("Nume playlist: ");
+        System.out.println("Playlist name: ");
         String playlistName = sc.next();
-        System.out.println("Nume artist: ");
+        System.out.println("Artist name: ");
         String artistName = sc.next();
 
 
@@ -105,7 +105,7 @@ public class CrudPlaylist implements ICrudPlaylist {
                 String artist = resultSet.getString("artist");
                 String link = resultSet.getString("link");
                 int duration = resultSet.getInt("duration");
-                Song song = new Song(title, Classes.genre.valueOf(genre), artist, link, duration);
+                Song song = new Song(title, genre, artist, link, duration);
                 hashSet.add(song);
             }
 
@@ -114,9 +114,12 @@ public class CrudPlaylist implements ICrudPlaylist {
         }
         Playlist playlist = new Playlist(playlistName, hashSet);
         allPlaylists.add(playlist);
+        System.out.println("Playlist created successfully!");
+        System.out.println(playlist);
 
     }
 
+    @Override
     public void seeAllPlaylists(ArrayList<Playlist> allPlaylists) {
         for (Playlist playlist : allPlaylists) {
             System.out.println(playlist.toString());
@@ -125,24 +128,27 @@ public class CrudPlaylist implements ICrudPlaylist {
     }
 
     @Override
-    public void playPlaylist(ArrayList<Playlist> allPlaylists) throws URISyntaxException, IOException, InterruptedException {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Playlist name : ");
-        String playlistName = scanner.next();
-        for (Playlist playlist : allPlaylists) {
-            if (Objects.equals(playlist.getPlaylistName(), playlistName)) {
-                for (Song song : playlist.getSongList()) {
-                    String youtubeLink = song.getLink();
-                    Desktop.getDesktop().browse(new URI(youtubeLink));
-                    Thread.sleep(song.getDuration() * 1000L);
+    public Thread playPlaylist(ArrayList<Playlist> allPlaylists, String playedPlaylistName) {
+        return new Thread(() -> {
+            try {
+                boolean playlistFound = false;
+                for (Playlist playlist : allPlaylists) {
+                    if (Objects.equals(playlist.getPlaylistName(), playedPlaylistName)) {
+                        playlistFound = true;
+                        for (Song song : playlist.getSongList()) {
+                            String youtubeLink = song.getLink();
+                            Desktop.getDesktop().browse(new URI(youtubeLink));
+                            Thread.sleep(song.getDuration() * 1000L);
+                        }
+                    }
                 }
-
+                if (!playlistFound) {
+                    System.out.println("Playlist not found");
+                }
+            } catch (URISyntaxException | IOException | InterruptedException e) {
+                throw new RuntimeException(e);
             }
-
-        }
-
-
+        });
     }
-
 
 }

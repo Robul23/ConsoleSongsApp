@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="ANALYZE_INJECTED_CODE" value="false" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d54d0a07-70cd-4ca0-a76b-c31a6dec836d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Classes/ICrudSong.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Classes/CrudPlaylist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/CrudPlaylist.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Classes/CrudSongs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/CrudSongs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Classes/CrudSongs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/CrudSong.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Classes/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/Database.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Classes/ICrudPlaylist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/ICrudPlaylist.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Classes/ICrudSongs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/ICrudSongs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Classes/ICrudSongs.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Classes/Playlist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/Playlist.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Classes/Song.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/Song.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Classes/genre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/genre.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -21,8 +30,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -40,18 +49,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Facultate/master/an1/tehnologii mobile/ConsoleSongsApp&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Facultate/master/an1/tehnologii mobile/ConsoleSongsApp",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="Classes" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />

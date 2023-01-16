@@ -4,19 +4,16 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Song {
-
     //    Variables
-
     private String title;
-    private genre genre;
+    private String genre;
     private String artist;
     private String link;
-
     private int duration;
 
     // CONSTRUCTOR
 
-    public Song(String title, Classes.genre genre, String artist, String link, int duration) {
+    public Song(String title, String genre, String artist, String link, int duration) {
         this.title = title;
         this.genre = genre;
         this.artist = artist;
@@ -27,54 +24,22 @@ public class Song {
     @Override
     public String toString() {
         return "Song{" +
-                "title='" + title + '\'' +
-                ", genre=" + genre +
-                ", artist='" + artist + '\'' +
-                ", link='" + link + '\'' +
-                ", duration='" + duration + '\'' +
-                '}';
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public Classes.genre getGenre() {
-        return genre;
-    }
-
-    public void setGenre(Classes.genre genre) {
-        this.genre = genre;
-    }
-
-    public String getArtist() {
-        return artist;
-    }
-
-    public void setArtist(String artist) {
-        this.artist = artist;
+                "Title = '" + title + '\'' +
+                ", Genre = " + genre +
+                ", Artist = '" + artist + '\'' +
+                ", Link = '" + link + '\'' +
+                ", Duration = '" + duration + '\'' + " seconds" +
+                "}";
     }
 
     public int getDuration() {
         return duration;
     }
 
-    public void setDuration(int duration) {
-        this.duration = duration;
-    }
 
     public String getLink() {
         return link;
     }
-
-    public void setLink(String link) {
-        this.link = link;
-    }
-
 
     public boolean ValidateTitle() {
         return this.title.contains(" ");
@@ -84,19 +49,21 @@ public class Song {
         return this.artist.length() >= 10;
 
     }
-
-    public boolean ValidateDudartion() {
+    public boolean ValidateDuration() {
         return this.duration > 0;
 
     }
-
     public boolean ValidateGenre() {
-        for (genre gen : Classes.genre.values()) {
-            if (gen.name().equals(this.genre.toString())) {
-                return true;
+        try {
+            for (genre gen : Classes.genre.values()) {
+                if (gen.name().equals(this.genre)) {
+                    return true;
+                }
             }
+            return false;
+        }catch(Exception e){
+           return false;
         }
-        return false;
     }
 
     public boolean ValidateLink() {
@@ -106,7 +73,7 @@ public class Song {
     }
 
     public boolean validateInput() {
-        return ValidateTitle() && ValidateArtist() && ValidateLink() && ValidateGenre() && ValidateDudartion();
+        return ValidateTitle() && ValidateArtist() && ValidateLink() && ValidateGenre() && ValidateDuration();
 
     }
 
