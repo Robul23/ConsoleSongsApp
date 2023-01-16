@@ -1,4 +1,5 @@
 package Classes;
+
 import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
@@ -13,6 +14,7 @@ import java.util.*;
 public class CrudPlaylist implements ICrudPlaylist {
 
     Database database;
+
     {
         try {
             database = new Database();
@@ -24,11 +26,14 @@ public class CrudPlaylist implements ICrudPlaylist {
     @Override
     public void createPlaylistRandomSongs(ArrayList<Song> list, ArrayList<Playlist> allPlaylists) {
         Scanner sc = new Scanner(System.in);
+        System.out.println("Playlist name:");
+        String playlistName = sc.nextLine();
+        if (checkPlaylistName(allPlaylists, playlistName) != null) {
+            System.out.println("There is already a playlist with this name. Please chose another name!");
+            return;
+        }
         System.out.println("Number of songs: ");
         int numberOfSongs = sc.nextInt();
-        System.out.println("Playlist name:");
-        String playlistName = sc.next();
-        sc.nextLine();
         HashSet<Song> hashSet = new HashSet<>();
         Random random = new Random();
         while (hashSet.size() < numberOfSongs) {
@@ -49,12 +54,13 @@ public class CrudPlaylist implements ICrudPlaylist {
         HashSet<Song> hashSet = new HashSet<>();
         Scanner sc = new Scanner(System.in);
         System.out.println("Playlist name: ");
-        String playlistName = sc.next();
+        String playlistName = sc.nextLine();
         System.out.println("Artist name: ");
-        String artistName = sc.next();
-        sc.nextLine();
+        String artistName = sc.nextLine();
         System.out.println("Song name: ");
-        String songTitle = sc.next();
+        String songTitle = sc.nextLine();
+        System.out.println("Nume : " + artistName);
+        System.out.println("Song : " + songTitle);
 
         Connection connection = database.connection;
         try {
@@ -76,10 +82,19 @@ public class CrudPlaylist implements ICrudPlaylist {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        Playlist playlist = new Playlist(playlistName, hashSet);
-        allPlaylists.add(playlist);
-        System.out.println("Playlist created successfully!");
-        System.out.println(playlist);
+        if (checkPlaylistName(allPlaylists, playlistName) != null) {
+
+            System.out.println("Song added to an existing playlist!");
+            Playlist playlist = checkPlaylistName(allPlaylists, playlistName);
+            playlist.getSongList().addAll(hashSet);
+            System.out.println(playlist);
+        } else {
+            Playlist playlist = new Playlist(playlistName, hashSet);
+            allPlaylists.add(playlist);
+            System.out.println("Playlist created successfully!");
+            System.out.println(playlist);
+        }
+
 
     }
 
@@ -88,9 +103,9 @@ public class CrudPlaylist implements ICrudPlaylist {
         HashSet<Song> hashSet = new HashSet<>();
         Scanner sc = new Scanner(System.in);
         System.out.println("Playlist name: ");
-        String playlistName = sc.next();
+        String playlistName = sc.nextLine();
         System.out.println("Artist name: ");
-        String artistName = sc.next();
+        String artistName = sc.nextLine();
 
 
         Connection connection = database.connection;
@@ -112,15 +127,25 @@ public class CrudPlaylist implements ICrudPlaylist {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        Playlist playlist = new Playlist(playlistName, hashSet);
-        allPlaylists.add(playlist);
-        System.out.println("Playlist created successfully!");
-        System.out.println(playlist);
+        if (checkPlaylistName(allPlaylists, playlistName) != null) {
+
+            System.out.println("Song added to an existing playlist!");
+            Playlist playlist = checkPlaylistName(allPlaylists, playlistName);
+            playlist.getSongList().addAll(hashSet);
+            System.out.println(playlist);
+        } else {
+            Playlist playlist = new Playlist(playlistName, hashSet);
+            allPlaylists.add(playlist);
+            System.out.println("Playlist created successfully!");
+            System.out.println(playlist);
+        }
+
 
     }
 
     @Override
     public void seeAllPlaylists(ArrayList<Playlist> allPlaylists) {
+        System.out.println("Here is a list with all playlists that you created: ");
         for (Playlist playlist : allPlaylists) {
             System.out.println(playlist.toString());
 
@@ -150,5 +175,16 @@ public class CrudPlaylist implements ICrudPlaylist {
             }
         });
     }
+
+    @Override
+    public Playlist checkPlaylistName(ArrayList<Playlist> allPlaylists, String nameToBeChecked) {
+        for (Playlist playlist : allPlaylists) {
+            if (playlist.getPlaylistName().equals(nameToBeChecked)) {
+                return playlist;
+            }
+        }
+        return null;
+    }
+
 
 }

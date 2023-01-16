@@ -12,4 +12,6 @@ public interface ICrudPlaylist {
     void seeAllPlaylists(ArrayList<Playlist> allPlaylists);
 
     Thread playPlaylist(ArrayList<Playlist> allPlaylists, String playedPlaylistName);
+
+    Playlist checkPlaylistName(ArrayList<Playlist> allPlaylists , String nameToBeChecked);
 }

@@ -13,9 +13,9 @@ public class Playlist {
 
     @Override
     public String toString() {
-        return "\n Playlist{" +
+        return "\n Playlist: {" +
                 "Playlist name = '" + playlistName + '\'' +
-                ",\n songList = " + songList +
+                ", Song List = " + songList +
                 '}';
     }
 

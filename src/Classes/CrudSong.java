@@ -21,12 +21,12 @@ public class CrudSong implements ICrudSong {
         Scanner sc = new Scanner(System.in);
         System.out.println("Add a valid title(at least 2 words) ");
         String title = sc.nextLine();
-        System.out.println("Add a valid gen(rock, pop, jazz, hiphop, electronic): ");
-        String gen = sc.next();
+        System.out.println("Add a valid gen(rock, pop, rap, hiphop, electronic): ");
+        String gen = sc.nextLine();
         System.out.println("Add a valid artist(10 characters): ");
-        String artist = sc.next();
+        String artist = sc.nextLine();
         System.out.println("Add a valid youtube link: ");
-        String link = sc.next();
+        String link = sc.nextLine();
         System.out.println("Add a valid duration(not negative): ");
         int duration = sc.nextInt();
 
@@ -73,7 +73,7 @@ public class CrudSong implements ICrudSong {
     public void seeAll() {
         Connection connection = database.connection;
         try {
-            String query = "SELECT * FROM SONGS ORDER BY DURATION";
+            String query = "SELECT * FROM SONGS ORDER BY GENRE";
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
             System.out.println("All songs from the database:");

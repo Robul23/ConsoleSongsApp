@@ -7,15 +7,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d54d0a07-70cd-4ca0-a76b-c31a6dec836d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Classes/ICrudSong.java" afterDir="false" />
+    <list default="true" id="d54d0a07-70cd-4ca0-a76b-c31a6dec836d" name="Changes" comment="bugfix and refactoring">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Classes/CrudPlaylist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/CrudPlaylist.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Classes/CrudSongs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/CrudSong.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Classes/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Classes/CrudSong.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/CrudSong.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Classes/ICrudPlaylist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/ICrudPlaylist.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Classes/ICrudSongs.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Classes/Playlist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/Playlist.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Classes/Song.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/Song.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Classes/genre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/genre.java" afterDir="false" />
@@ -91,9 +87,19 @@
       <option name="presentableId" value="Default" />
       <updated>1666711607806</updated>
     </task>
+    <task id="LOCAL-00001" summary="bugfix and refactoring">
+      <created>1673906022993</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1673906022993</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="bugfix and refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="bugfix and refactoring" />
   </component>
 </project>

@@ -47,7 +47,7 @@ public class Main {
                     case 6 -> crudPlaylist.addAllTheSongFromAnArtist(allPlaylists);
                     case 7 -> {
                         System.out.println("Playlist name :");
-                        String playedPlaylistName = playlistScanner.next();
+                        String playedPlaylistName = playlistScanner.nextLine();
                         Thread thread = crudPlaylist.playPlaylist(allPlaylists, playedPlaylistName);
                         thread.start();
 

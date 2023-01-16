@@ -23,7 +23,7 @@ public class Song {
 
     @Override
     public String toString() {
-        return "Song{" +
+        return "\nSong : {" +
                 "Title = '" + title + '\'' +
                 ", Genre = " + genre +
                 ", Artist = '" + artist + '\'' +
