@@ -15,10 +15,8 @@ public class Main {
 
     public static void main(String[] args) throws URISyntaxException, IOException, InterruptedException {
 
-        ArrayList<Song> arrayList = new ArrayList<>();
-        HashSet<Song> songsHashSet = new HashSet<>();
-        Playlist playlist = new Playlist("numerandom", songsHashSet);
-
+        ArrayList<Playlist> allPlaylists = new ArrayList<>();
+        ArrayList<Song> songsList = new ArrayList<>();
 
         CrudSongs crudSongs = new CrudSongs();
         CrudPlaylist crudPlaylist = new CrudPlaylist();
@@ -35,18 +33,24 @@ public class Main {
             System.out.println("5: Add a song from database to a playlist (by artist and title)");
             System.out.println("6: Add all songs to database by an artist to a playlist");
             System.out.println("7: Play the songs from a playlist one by one");
+            System.out.println("8: See all playlists created");
             System.out.println("0: Exit");
             System.out.println("Enter your choice");
 
             int choice = sc.nextInt();
+            sc.nextLine();
             switch (choice) {
                 case 1 -> crudSongs.addSong();
                 case 2 -> crudSongs.deleteSong();
                 case 3 -> crudSongs.seeAll();
-                case 4 -> crudPlaylist.createPlaylistRandomSongs(arrayList);
-                case 5 -> crudPlaylist.addSongsToPlaylistByArtistAndTitle();
-                case 6 -> crudPlaylist.addAllTheSongFromAnArtist();
-                case 7 -> crudPlaylist.playPlaylist(playlist);
+                case 4 -> {
+                    crudSongs.storeAllSongsInArray(songsList);
+                    crudPlaylist.createPlaylistRandomSongs(songsList, allPlaylists);
+                }
+                case 5 -> crudPlaylist.addSongsToPlaylistByArtistAndTitle(allPlaylists);
+                case 6 -> crudPlaylist.addAllTheSongFromAnArtist(allPlaylists);
+                case 7 -> crudPlaylist.playPlaylist(allPlaylists);
+                case 8 -> crudPlaylist.seeAllPlaylists(allPlaylists);
                 case 0 -> isRunning = false;
                 default -> System.out.println("Invalid choice");
             }

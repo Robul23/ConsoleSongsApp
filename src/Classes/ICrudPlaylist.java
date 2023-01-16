@@ -4,13 +4,15 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 public interface ICrudPlaylist {
-    public Playlist createPlaylistRandomSongs(ArrayList<Song> list);
+    public void createPlaylistRandomSongs(ArrayList<Song> list, ArrayList<Playlist> allPlaylists);
 
-    public Playlist addSongsToPlaylistByArtistAndTitle();
+    public void addSongsToPlaylistByArtistAndTitle(ArrayList<Playlist> allPlaylists);
 
-    public Playlist addAllTheSongFromAnArtist();
+    public void addAllTheSongFromAnArtist(ArrayList<Playlist> allPlaylists);
 
-    public void playPlaylist (Playlist playlist) throws URISyntaxException, IOException, InterruptedException;
+    public void seeAllPlaylists (ArrayList<Playlist> allPlaylists);
+
+    public void playPlaylist (ArrayList<Playlist> allPlaylists) throws URISyntaxException, IOException, InterruptedException;
 
 
 }

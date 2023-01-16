@@ -10,10 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class CrudPlaylist implements ICrudPlaylist {
 
@@ -29,14 +26,14 @@ public class CrudPlaylist implements ICrudPlaylist {
 
 
     @Override
-    public Playlist createPlaylistRandomSongs(ArrayList<Song> list) {
+    public void createPlaylistRandomSongs(ArrayList<Song> list, ArrayList<Playlist> allPlaylists) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Numarul de melodii din playlist");
         int numberOfSongs = sc.nextInt();
         System.out.println("Nume playlist:");
         String playlistName = sc.next();
         sc.nextLine();
-        HashSet<Song> hashSet = new HashSet<Song>();
+        HashSet<Song> hashSet = new HashSet<>();
         Random random = new Random();
         while (hashSet.size() < numberOfSongs) {
             int randomIndex = random.nextInt(list.size());
@@ -44,12 +41,13 @@ public class CrudPlaylist implements ICrudPlaylist {
 
         }
 
-        return new Playlist(playlistName, hashSet);
+        Playlist playlist = new Playlist(playlistName, hashSet);
+        allPlaylists.add(playlist);
 
     }
 
     @Override
-    public Playlist addSongsToPlaylistByArtistAndTitle() {
+    public void addSongsToPlaylistByArtistAndTitle(ArrayList<Playlist> allPlaylists) {
         HashSet<Song> hashSet = new HashSet<>();
         Scanner sc = new Scanner(System.in);
         System.out.println("Nume playlist: ");
@@ -80,21 +78,20 @@ public class CrudPlaylist implements ICrudPlaylist {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return new Playlist(playlistName, hashSet);
+        Playlist playlist = new Playlist(playlistName, hashSet);
+        allPlaylists.add(playlist);
 
     }
 
     @Override
-    public Playlist addAllTheSongFromAnArtist() {
+    public void addAllTheSongFromAnArtist(ArrayList<Playlist> allPlaylists) {
         HashSet<Song> hashSet = new HashSet<>();
         Scanner sc = new Scanner(System.in);
         System.out.println("Nume playlist: ");
         String playlistName = sc.next();
         System.out.println("Nume artist: ");
         String artistName = sc.next();
-        sc.nextLine();
-        System.out.println("Nume melodie: ");
-        String songTitle = sc.next();
+
 
         Connection connection = database.connection;
         try {
@@ -115,17 +112,35 @@ public class CrudPlaylist implements ICrudPlaylist {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return new Playlist(playlistName, hashSet);
+        Playlist playlist = new Playlist(playlistName, hashSet);
+        allPlaylists.add(playlist);
 
     }
 
-    @Override
-    public void playPlaylist(Playlist playlist) throws URISyntaxException, IOException, InterruptedException {
-        for (Song song : playlist.getSongList()) {
-            String youtubeLink = song.getLink();
-            Desktop.getDesktop().browse(new URI(youtubeLink));
-            Thread.sleep(song.getDuration() * 1000L);
+    public void seeAllPlaylists(ArrayList<Playlist> allPlaylists) {
+        for (Playlist playlist : allPlaylists) {
+            System.out.println(playlist.toString());
+
         }
+    }
+
+    @Override
+    public void playPlaylist(ArrayList<Playlist> allPlaylists) throws URISyntaxException, IOException, InterruptedException {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Playlist name : ");
+        String playlistName = scanner.next();
+        for (Playlist playlist : allPlaylists) {
+            if (Objects.equals(playlist.getPlaylistName(), playlistName)) {
+                for (Song song : playlist.getSongList()) {
+                    String youtubeLink = song.getLink();
+                    Desktop.getDesktop().browse(new URI(youtubeLink));
+                    Thread.sleep(song.getDuration() * 1000L);
+                }
+
+            }
+
+        }
+
 
     }
 

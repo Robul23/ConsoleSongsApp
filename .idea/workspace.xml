@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="d54d0a07-70cd-4ca0-a76b-c31a6dec836d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Classes/CrudPlaylist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/CrudPlaylist.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Classes/CrudSongs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/CrudSongs.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Classes/ICrudPlaylist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/ICrudPlaylist.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Classes/Playlist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/Playlist.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Classes/ICrudSongs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/ICrudSongs.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

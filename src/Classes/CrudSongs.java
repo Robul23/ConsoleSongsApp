@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CrudSongs implements ICrudSongs {
@@ -89,6 +90,28 @@ public class CrudSongs implements ICrudSongs {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+    }
+
+    public void storeAllSongsInArray(ArrayList<Song> songList){
+        Connection connection = database.connection;
+        try {
+            String query = "SELECT * FROM SONGS ORDER BY DURATION";
+            PreparedStatement statement = connection.prepareStatement(query);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                String title = resultSet.getString("title");
+                String genre = resultSet.getString("genre");
+                String artist = resultSet.getString("artist");
+                String link = resultSet.getString("link");
+                int duration = resultSet.getInt("duration");
+                Song song = new Song(title, Classes.genre.valueOf(genre), artist, link, duration);
+                songList.add(song);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
 
     }
 }
